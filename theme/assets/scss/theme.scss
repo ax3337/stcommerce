@@ -1,7 +1,7 @@
 @import "~bulma/sass/utilities/initial-variables";
 
 $green: #00b366;
-$login: #116363;
+$login: $green;
 $registry: orange;
 $primary: $green;
 $link: #000;
@@ -52,6 +52,7 @@ $ig-blue: #636363 !default;
 body {
   margin-top: 3.25rem;
   transition: margin 200ms ease-in-out;
+  background-color: #f5f5f5;
 }
 
 a, input, button {

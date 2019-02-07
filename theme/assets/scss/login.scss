@@ -55,7 +55,7 @@
 }
 
 .login-form-with-guest {
-     margin: 0;   
+     margin: 0;
 }
 
 .login-section-guest {
@@ -119,6 +119,11 @@
 }
 
 .login-button {
+    margin: 0 10px;
+    display: contents;
+}
+
+.login-button p {
     margin: 0 10px;
 }
 

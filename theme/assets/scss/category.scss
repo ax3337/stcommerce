@@ -26,7 +26,7 @@
 }
 
 .left-sidebar {
-  background-color: whitesmoke;
+  background-color: #f2f2f2;
   padding: 1.5rem;
 }
 
@@ -160,13 +160,35 @@
 }
 
 .products .product-caption {
-  text-align: center;
+  text-align: left;
   margin-top: 0.25rem;
 }
 
 .products .product-name {
-  color: #333;
-  font-size: 0.9rem;
+  color: #000;
+  font-size: 1rem;
+}
+
+.products .product-content-info {
+  color: #636363;
+  font-size: 0.8rem;
+}
+
+.products .product-content-info td{
+  padding-right: 20px;
+}
+
+.products .product-addToCartButton{
+  color: #636363;
+  font-size: 0.8rem;
+}
+
+.products .product-addToCartButton td{
+  padding-right: 10px;
+}
+
+.products .product-addToCartButton input{
+  width: 30px;
 }
 
 .products .product-price {

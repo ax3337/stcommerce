@@ -4,6 +4,7 @@ import { themeSettings, text } from '../../lib/settings';
 import ItemTags from './itemTags';
 import ItemImage from './itemImage';
 import ItemPrice from './itemPrice';
+import AddToCartButton from './addToCartButton';
 
 const Item = ({
 	product,
@@ -40,20 +41,53 @@ const Item = ({
 				product.stock_status
 			}`}
 		>
-			<NavLink to={product.path}>
-				<figure className="image" style={{ height: imageHeight }}>
-					<ItemTags tags={product.tags} />
-					<ItemImage
-						images={product.images}
-						productName={product.name}
-						height={placeholderHeight}
-					/>
-				</figure>
+			<div>
+				<NavLink to={product.path}>
+					<figure className="image" style={{ height: imageHeight }}>
+						<ItemTags tags={product.tags} />
+						<ItemImage
+							images={product.images}
+							productName={product.name}
+							height={placeholderHeight}
+						/>
+					</figure>
+				</NavLink>
 				<div className="content product-caption">
 					<div className="product-name">{product.name}</div>
+					<div className="product-content-info">
+						<tr>
+							<td>Артикул:</td>
+							<td>{product.sku}</td>
+						</tr>
+						<tr>
+							<td>Ед. измерения:</td>
+							<td>-none-</td>
+						</tr>
+						<tr>
+							<td>В упаковке:</td>
+							<td>-none-</td>
+						</tr>
+						<tr>
+							<td>Наличие:</td>
+							<td>{product.stock_quantity}</td>
+						</tr>
+					</div>
+					<div className="product-addToCartButton">
+						<tr>
+							<td>Количество:</td>
+							<td>
+								<input />
+							</td>
+							<td>
+								<div className="button-addtocart">
+									<AddToCartButton product={product} />
+								</div>
+							</td>
+						</tr>
+					</div>
 					<ItemPrice product={product} settings={settings} />
 				</div>
-			</NavLink>
+			</div>
 		</div>
 	);
 };

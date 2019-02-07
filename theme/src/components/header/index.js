@@ -88,7 +88,11 @@ export default class Header extends React.Component {
 			mobileMenuIsActive: false
 		});
 
-		if (this.props.state.cart && this.props.state.cart.items && this.props.state.cart.items.length > 0) {
+		if (
+			this.props.state.cart &&
+			this.props.state.cart.items &&
+			this.props.state.cart.items.length > 0
+		) {
 			this.props.cartLayerInitialized({
 				cartlayerBtnInitialized: true
 			});
@@ -117,7 +121,7 @@ export default class Header extends React.Component {
 			});
 			this.props.setLocation('/customer-account');
 		}
-	}
+	};
 
 	handleSearch = search => {
 		if (this.props.state.currentPage.path === '/search') {
@@ -184,16 +188,7 @@ export default class Header extends React.Component {
 										style={{ minWidth: 24 }}
 									/>
 								</span>
-								<SearchBox
-									value={productFilter.search}
-									onSearch={this.handleSearch}
-									className={
-										this.state.mobileSearchIsActive ? 'search-active' : ''
-									}
-								/>
-								<Login
-									onClick={this.handleLogin}
-								/>
+								<Login onClick={this.handleLogin} />
 								<CartIndicator
 									cart={cart}
 									onClick={this.cartToggle}
@@ -213,6 +208,11 @@ export default class Header extends React.Component {
 								</div>
 							</div>
 						</div>
+						<SearchBox
+							value={productFilter.search}
+							onSearch={this.handleSearch}
+							className={this.state.mobileSearchIsActive ? 'search-active' : ''}
+						/>
 
 						<div className="primary-nav is-hidden-mobile">
 							<HeadMenu

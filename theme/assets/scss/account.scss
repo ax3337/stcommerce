@@ -1,11 +1,12 @@
 .account-field {
     margin-bottom: 14px;
-    min-width: 315px;
+    min-width: 245px;
 }
 
 .account-field input[type="text"],
 .account-field input[type="email"],
 .account-field input[type="tel"],
+.account-field input[type="mobile"],
 .account-field input[type="password"],
 .account-field textarea {
     width: 100%;
@@ -17,6 +18,7 @@
 .account-field input[type="text"]:focus,
 .account-field input[type="email"]:focus,
 .account-field input[type="tel"]:focus,
+.account-field input[type="mobile"]:focus,
 .account-field input[type="password"]:focus,
 .account-field textarea:focus {
     outline: none;
@@ -26,6 +28,7 @@
 .account-field input[type="text"].invalid,
 .account-field input[type="email"].invalid,
 .account-field input[type="tel"].invalid,
+.account-field input[type="mobile"].invalid,
 .account-field input[type="password"].invalid,
 .account-field textarea.invalid {
     border: 1px solid #e96161;
@@ -63,10 +66,11 @@
 }
 
 .account-button {
+    background-color: $login;
+    color: #fff;
     position: relative;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    text-transform: uppercase;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .account-button:disabled {
@@ -135,6 +139,51 @@
             }
         }
     }
+}
+
+.account-body {
+    display: flex;
+    h4 {
+        color: #9e9e9e;
+    };
+}
+
+.account-profile-address-container {
+    display: flex;
+}
+
+.account-profile-address-container1,
+.account-profile-address-container2 {
+    display: block;
+}
+
+.account-profile-address-container1 {
+    margin-right: 16px;
+}
+
+.account-profile-new-container {
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+    margin-bottom: 30px;
+    margin-right: 16px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.1);
+    width: 38%;
+}
+
+.account-orders-container {
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.1);
+    width: 60%
 }
 
 .account-profile-container {
@@ -206,21 +255,20 @@
 .sheet-cell-state {
     text-align: center;
 }
-  
+
 thead tr th:first-child,
 tbody tr td:first-child {
     word-break: break-all;
 }
-  
-  /* for custom scrollbar for webkit browser*/
-  
-::-webkit-scrollbar {
-    width: 6px;
-} 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-}
 
+  /* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
