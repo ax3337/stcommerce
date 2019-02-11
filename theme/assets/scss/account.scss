@@ -1,6 +1,5 @@
 .account-field {
     margin-bottom: 14px;
-    min-width: 245px;
 }
 
 .account-field input[type="text"],
@@ -40,7 +39,6 @@
     font-weight: normal;
     color: #747679;
     margin-bottom: .5em;
-    display: block;
 }
 
 .account-field .error {
@@ -148,6 +146,11 @@
     };
 }
 
+.account-profile-title {
+    border-bottom: 1px solid #9e9e9e;
+    padding: 0 0 16px;
+}
+
 .account-profile-address-container {
     display: flex;
 }
@@ -155,6 +158,7 @@
 .account-profile-address-container1,
 .account-profile-address-container2 {
     display: block;
+    width: 50%;
 }
 
 .account-profile-address-container1 {
