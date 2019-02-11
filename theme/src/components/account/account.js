@@ -506,6 +506,28 @@ class Account extends React.Component {
 						</div>
 						<div className="account-orders-container">
 							<h4>{text.order_history}</h4>
+							<div className="schedule padd-lr">
+								<div className="tbl-header">
+									<table
+										cellPadding="0"
+										cellSpacing="0"
+										id="mytable"
+										style={tableStyle}
+									>
+										<thead>{listHeader}</thead>
+									</table>
+								</div>
+								<div className="tbl-content">
+									<table
+										cellPadding="0"
+										cellSpacing="0"
+										className={'orders-history-table'}
+										style={tableStyle}
+									>
+										<tbody>{list}</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 
