@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import MetaTags from '../components/metaTags';
 import OrderSummary from '../components/orderSummary';
-import CheckoutForm from '../components/checkoutForm';
+// import CheckoutForm from '../components/checkoutForm';
 
 const CheckoutContainer = props => {
 	const {
@@ -22,11 +22,8 @@ const CheckoutContainer = props => {
 			<section className="section section-checkout">
 				<div className="container">
 					<div className="columns columns-checkout">
-						<div className="column is-5-widescreen is-offset-1-widescreen is-6-desktop">
+						<div>
 							<OrderSummary {...props} />
-						</div>
-						<div className="column is-6-widescreen is-6-desktop">
-							<CheckoutForm {...props} />
 						</div>
 					</div>
 				</div>

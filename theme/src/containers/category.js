@@ -43,6 +43,13 @@ const CategoryHero = ({ categoryDetails, categories }) => (
 					dangerouslySetInnerHTML={{ __html: categoryDetails.description }}
 				/>
 			</div>
+			<div className="column is-5">
+				<Sort
+					defaultSort={settings.default_product_sorting}
+					currentSort={productFilter.sort}
+					setSort={setSort}
+				/>
+			</div>
 		</div>
 	</section>
 );

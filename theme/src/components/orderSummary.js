@@ -13,8 +13,8 @@ const SummaryItem = ({ settings, item, updateCartItemQuantiry }) => {
 	const maxQty = item.stock_backorder
 		? themeSettings.maxCartItemQty
 		: item.stock_quantity >= themeSettings.maxCartItemQty
-			? themeSettings.maxCartItemQty
-			: item.stock_quantity;
+		? themeSettings.maxCartItemQty
+		: item.stock_quantity;
 
 	for (let i = 0; i <= maxQty; i++) {
 		const optionText = i === 0 ? text.remove : i;
@@ -26,42 +26,47 @@ const SummaryItem = ({ settings, item, updateCartItemQuantiry }) => {
 	}
 
 	return (
-		<div className="columns is-mobile">
-			<div className="column is-3">
-				<div className="image">
-					<NavLink to={item.path}>
-						<img
-							className="product-image"
-							src={thumbnail}
-							alt={item.name}
-							title={item.name}
-						/>
-					</NavLink>
-				</div>
+		<div>
+			<div className="columns is-mobile">
+				<div className="column is-6" />
 			</div>
-			<div className="column">
-				<div>
-					<NavLink to={item.path}>{item.name}</NavLink>
+			<div className="columns is-mobile">
+				<div className="column is-3">
+					<div className="image">
+						<NavLink to={item.path}>
+							<img
+								className="product-image"
+								src={thumbnail}
+								alt={item.name}
+								title={item.name}
+							/>
+						</NavLink>
+					</div>
 				</div>
-				{item.variant_name.length > 0 && (
-					<div className="cart-option-name">{item.variant_name}</div>
-				)}
-				<div className="qty">
-					<span>{text.qty}:</span>
-					<span className="select is-small">
-						<select
-							onChange={e => {
-								updateCartItemQuantiry(item.id, e.target.value);
-							}}
-							value={item.quantity}
-						>
-							{qtyOptions}
-						</select>
-					</span>
+				<div className="column">
+					<div>
+						<NavLink to={item.path}>{item.name}</NavLink>
+					</div>
+					{item.variant_name.length > 0 && (
+						<div className="cart-option-name">{item.variant_name}</div>
+					)}
+					<div className="qty">
+						<span>{text.qty}:</span>
+						<span className="select is-small">
+							<select
+								onChange={e => {
+									updateCartItemQuantiry(item.id, e.target.value);
+								}}
+								value={item.quantity}
+							>
+								{qtyOptions}
+							</select>
+						</span>
+					</div>
 				</div>
-			</div>
-			<div className="column is-3 has-text-right price">
-				{helper.formatCurrency(item.price_total, settings)}
+				<div className="column is-3 has-text-right price">
+					{helper.formatCurrency(item.price_total, settings)}
+				</div>
 			</div>
 		</div>
 	);

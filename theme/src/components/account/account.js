@@ -400,110 +400,174 @@ class Account extends React.Component {
 
 			return (
 				<div className="account-container">
-					<div className="account-section">
-						<h2 className={titleClassName}>
-							{text.welcome} {customerProperties.customer_settings.full_name}
-						</h2>
-					</div>
 					<div className="account-body">
-						<div className="account-profile-new-container">
-							<h4>{text.account_profile_headline}</h4>
-							<Field
-								className={accountInputField}
-								name="first_name"
-								model="customerProperties.customer_settings.first_name"
-								id="customer.first_name"
-								autoComplete="new-password"
-								component={InputField}
-								type="text"
-								label={this.getFieldLabel('first_name')}
-								validate={this.getFieldValidators('first_name')}
-								placeholder={this.getFieldPlaceholder('first_name')}
-							/>
-							<Field
-								className={accountInputField}
-								name="email"
-								value={customerProperties.customer_settings.email}
-								id="customer.email"
-								autoComplete="new-password"
-								component={InputField} //this.state.loggedin
-								type="email"
-								label={this.getFieldLabel('email')}
-								validate={this.getFieldValidators('email')}
-								placeholder={this.getFieldPlaceholder('email')}
-							/>
-							<Field
-								className={accountInputField}
-								name="mobile"
-								id="customer.mobile"
-								autoComplete="new-password"
-								component={InputField} //this.state.loggedin
-								type="mobile"
-								label={this.getFieldLabel('mobile')}
-								validate={this.getFieldValidators('mobile')}
-								placeholder={this.getFieldPlaceholder('mobile')}
-							/>
-							<h4>Адрес доставки</h4>
-							<div className="account-profile-address-container">
-								<div className="account-profile-address-container1">
-									<Field
-										className={accountInputField}
-										name="shipping_address.country"
-										id="shipping_address.country"
-										component={InputField}
-										type="text"
-										label={this.getFieldLabel('country')}
-										validate={this.getFieldValidators('country')}
-										placeholder={this.getFieldPlaceholder('country')}
-									/>
-									<Field
-										className={accountInputField}
-										name="shipping_address.city"
-										id="shipping_address.city"
-										component={InputField}
-										type="text"
-										label={this.getFieldLabel('city')}
-										validate={this.getFieldValidators('city')}
-										placeholder={this.getFieldPlaceholder('city')}
-									/>
-
-									<Field
-										className={accountInputField}
-										name="shipping_address.postal_code"
-										id="shipping_address.postal_code"
-										component={InputField}
-										type="text"
-										label={this.getFieldLabel('postal_code')}
-										validate={this.getFieldValidators('postal_code')}
-										placeholder={this.getFieldPlaceholder('postal_code')}
-									/>
+						{this.state.profileSection === 1 && !this.state.profileEdit && (
+							<div className="account-profile-new-container">
+								<h4>{text.account_profile_headline}</h4>
+								<ReadOnlyField
+									name={text.first_name}
+									value={customerProperties.customer_settings.first_name}
+								/>
+								<ReadOnlyField
+									name={text.email}
+									value={customerProperties.customer_settings.email}
+								/>
+								<ReadOnlyField
+									name={text.mobile}
+									value={customerProperties.customer_settings.mobile}
+								/>
+								<h4>Адрес доставки</h4>
+								<div className="account-profile-address-container">
+									<div className="account-profile-address-container1">
+										{Object.keys(shippingAddress).length > 0 && (
+											<ReadOnlyField
+												name={text.country}
+												value={shippingAddress.country}
+											/>
+										)}
+										{Object.keys(shippingAddress).length > 0 && (
+											<ReadOnlyField
+												name={text.city}
+												value={shippingAddress.city}
+											/>
+										)}
+										{Object.keys(shippingAddress).length > 0 && (
+											<ReadOnlyField
+												name={text.postal_code}
+												value={shippingAddress.postal_code}
+											/>
+										)}
+									</div>
+									<div className="account-profile-address-container2">
+										{Object.keys(shippingAddress).length > 0 && (
+											<ReadOnlyField
+												name={text.state}
+												value={shippingAddress.state}
+											/>
+										)}
+										{Object.keys(shippingAddress).length > 0 && (
+											<ReadOnlyField
+												name={text.address1}
+												value={shippingAddress.address1}
+											/>
+										)}
+									</div>
 								</div>
-								<div className="account-profile-address-container2">
+								<h4>Варианты доставки</h4>
+								<div />
+							</div>
+						)}
+						{this.state.profileSection === 1 && this.state.profileEdit && (
+							<div className="account-profile-new-container">
+								<h4>{text.account_profile_headline}</h4>
+								<form onSubmit={handleSubmit} className={accountForm}>
 									<Field
 										className={accountInputField}
-										name="shipping_address.state"
-										id="shipping_address.state"
+										name="first_name"
+										model="customerProperties.customer_settings.first_name"
+										id="customer.first_name"
+										autoComplete="new-password"
 										component={InputField}
 										type="text"
-										label={this.getFieldLabel('state')}
-										validate={this.getFieldValidators('state')}
-										placeholder={this.getFieldPlaceholder('state')}
+										label={this.getFieldLabel('first_name')}
+										validate={this.getFieldValidators('first_name')}
+										placeholder={this.getFieldPlaceholder('first_name')}
 									/>
 									<Field
 										className={accountInputField}
-										name="shipping_address.address1"
-										id="shipping_address.address1"
-										component={InputField}
-										type="text"
-										label={this.getFieldLabel('address1')}
-										validate={this.getFieldValidators('address1')}
-										placeholder={this.getFieldPlaceholder('address1')}
+										name="email"
+										value={customerProperties.customer_settings.email}
+										id="customer.email"
+										autoComplete="new-password"
+										component={InputField} //this.state.loggedin
+										type="email"
+										label={this.getFieldLabel('email')}
+										validate={this.getFieldValidators('email')}
+										placeholder={this.getFieldPlaceholder('email')}
 									/>
+									<Field
+										className={accountInputField}
+										name="mobile"
+										id="customer.mobile"
+										autoComplete="new-password"
+										component={InputField} //this.state.loggedin
+										type="mobile"
+										label={this.getFieldLabel('mobile')}
+										validate={this.getFieldValidators('mobile')}
+										placeholder={this.getFieldPlaceholder('mobile')}
+									/>
+								</form>
+								<h4>Адрес доставки</h4>
+								<div className="account-profile-address-container">
+									<div className="account-profile-address-container1">
+										<Field
+											className={accountInputField}
+											name="shipping_address.country"
+											id="shipping_address.country"
+											component={InputField}
+											type="text"
+											label={this.getFieldLabel('country')}
+											validate={this.getFieldValidators('country')}
+											placeholder={this.getFieldPlaceholder('country')}
+										/>
+										<Field
+											className={accountInputField}
+											name="shipping_address.city"
+											id="shipping_address.city"
+											component={InputField}
+											type="text"
+											label={this.getFieldLabel('city')}
+											validate={this.getFieldValidators('city')}
+											placeholder={this.getFieldPlaceholder('city')}
+										/>
+
+										<Field
+											className={accountInputField}
+											name="shipping_address.postal_code"
+											id="shipping_address.postal_code"
+											component={InputField}
+											type="text"
+											label={this.getFieldLabel('postal_code')}
+											validate={this.getFieldValidators('postal_code')}
+											placeholder={this.getFieldPlaceholder('postal_code')}
+										/>
+									</div>
+									<div className="account-profile-address-container2">
+										<Field
+											className={accountInputField}
+											name="shipping_address.state"
+											id="shipping_address.state"
+											component={InputField}
+											type="text"
+											label={this.getFieldLabel('state')}
+											validate={this.getFieldValidators('state')}
+											placeholder={this.getFieldPlaceholder('state')}
+										/>
+										<Field
+											className={accountInputField}
+											name="shipping_address.address1"
+											id="shipping_address.address1"
+											component={InputField}
+											type="text"
+											label={this.getFieldLabel('address1')}
+											validate={this.getFieldValidators('address1')}
+											placeholder={this.getFieldPlaceholder('address1')}
+										/>
+									</div>
+								</div>
+								<h4>Варианты доставки</h4>
+								<div />
+								<div className="checkout-button-wrap">
+									<button
+										type="submit"
+										//disabled={invalid}
+										className={accountEditButtonClass}
+									>
+										{text.save}
+									</button>
 								</div>
 							</div>
-							<h4>Варианты доставки</h4>
-							<div />
-						</div>
+						)}
 						<div className="account-orders-container">
 							<h4>{text.order_history}</h4>
 							<div className="schedule padd-lr">
@@ -530,385 +594,6 @@ class Account extends React.Component {
 							</div>
 						</div>
 					</div>
-
-					<div className={accountHeaderMenueContainer}>
-						<ul className={accountHeaderMenueItems}>
-							<li
-								className={this.state.profileSection === 1 ? isActive : ''}
-								onClick={this.handleProfile}
-							>
-								{text.profile}
-							</li>
-							<li
-								className={this.state.profileSection === 2 ? isActive : ''}
-								onClick={this.handleOrderHistory}
-							>
-								{text.orders}
-							</li>
-							<li>
-								<Link
-									to="/"
-									style={{ textDecoration: 'none' }}
-									key={'logout'}
-									onClick={this.handleLogout}
-								>
-									{text.logout}
-								</Link>
-							</li>
-						</ul>
-					</div>
-					{this.state.profileSection === 1 && !this.state.profileEdit && (
-						<div className={accountProfileContainer}>
-							<div className={accountProfileList}>
-								<div className={accountProfileHeadline}>
-									<img
-										src="/assets/images/icons/person.svg"
-										alt="person-icon"
-										className="person-icon"
-										style={{ width: 25, height: 20 }}
-									/>
-									<h4>{text.account_profile_headline}</h4>
-								</div>
-								<ReadOnlyField
-									name={text.member_since}
-									value={new Date(
-										customerProperties.customer_settings.date_created
-									).toLocaleDateString('de-DE')}
-								/>
-								<ReadOnlyField
-									name={text.first_name}
-									value={customerProperties.customer_settings.first_name}
-								/>
-								<ReadOnlyField
-									name={text.last_name}
-									value={customerProperties.customer_settings.last_name}
-								/>
-								<ReadOnlyField
-									name={text.email}
-									value={customerProperties.customer_settings.email}
-								/>
-							</div>
-							<div className={accountProfileList}>
-								<div className={accountProfileHeadline}>
-									<img
-										src="/assets/images/icons/address.svg"
-										alt="person-icon"
-										className="person-icon"
-										style={{ width: 25, height: 20 }}
-									/>
-									<h4>{text.account_billing_headline}</h4>
-								</div>
-								{Object.keys(billingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.address1}
-										value={billingAddress.address1}
-									/>
-								)}
-								{Object.keys(billingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.address2}
-										value={billingAddress.address2}
-									/>
-								)}
-								{Object.keys(billingAddress).length > 0 && (
-									<ReadOnlyField name={text.city} value={billingAddress.city} />
-								)}
-								{Object.keys(billingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.postal_code}
-										value={billingAddress.postal_code}
-									/>
-								)}
-								{Object.keys(billingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.state}
-										value={billingAddress.state}
-									/>
-								)}
-								<p>
-									{Object.keys(billingAddress).length === 0 ? text.empty : ''}
-								</p>
-							</div>
-							<div className={accountProfileList}>
-								<div className={accountProfileHeadline}>
-									<img
-										src="/assets/images/icons/bag.svg"
-										alt="person-icon"
-										className="person-icon"
-										style={{ width: 25, height: 20 }}
-									/>
-									<h4>{text.shippingAddress}</h4>
-								</div>
-								{Object.keys(shippingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.address1}
-										value={shippingAddress.address1}
-									/>
-								)}
-								{Object.keys(shippingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.address2}
-										value={shippingAddress.address2}
-									/>
-								)}
-								{Object.keys(shippingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.city}
-										value={shippingAddress.city}
-									/>
-								)}
-								{Object.keys(shippingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.postal_code}
-										value={shippingAddress.postal_code}
-									/>
-								)}
-								{Object.keys(shippingAddress).length > 0 && (
-									<ReadOnlyField
-										name={text.state}
-										value={shippingAddress.state}
-									/>
-								)}
-								<p>
-									{Object.keys(shippingAddress).length === 0 ? text.empty : ''}
-								</p>
-							</div>
-						</div>
-					)}
-					{this.state.profileSection === 1 && this.state.profileEdit && (
-						<div className={accountProfileContainer}>
-							<form onSubmit={handleSubmit} className={accountForm}>
-								<h3 className={titleClassName}>{text.edit_profile}</h3>
-								<Field
-									className={accountInputField}
-									name="first_name"
-									id="customer.first_name"
-									autoComplete="new-password"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('first_name')}
-									validate={this.getFieldValidators('first_name')}
-									placeholder={this.getFieldPlaceholder('first_name')}
-								/>
-								<Field
-									className={accountInputField}
-									name="last_name"
-									id="customer.last_name"
-									autoComplete="new-password"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('last_name')}
-									validate={this.getFieldValidators('last_name')}
-									placeholder={this.getFieldPlaceholder('last_name')}
-								/>
-								<Field
-									className={accountInputField}
-									name="email"
-									id="customer.email"
-									autoComplete="new-password"
-									component={InputField} //this.state.loggedin
-									type="email"
-									label={this.getFieldLabel('email')}
-									validate={this.getFieldValidators('email')}
-									placeholder={this.getFieldPlaceholder('email')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="password"
-									id="customer.password"
-									autoComplete="new-password"
-									component={InputField}
-									type="password"
-									label={this.getFieldLabel('password')}
-									validate={this.getFieldValidators('password')}
-									placeholder={this.getFieldPlaceholder('password')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="password_verify"
-									id="customer.password_verify"
-									autoComplete="new-password"
-									component={InputField}
-									type="password"
-									label={this.getFieldLabel('password_verify')}
-									validate={this.getFieldValidators('password_verify')}
-									placeholder={this.getFieldPlaceholder('password_verify')}
-								/>
-								<h3 className={titleClassName}>{text.shippingAddress}</h3>
-								<Field
-									className={accountInputField}
-									name="shipping_address.address1"
-									id="shipping_address.address1"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('address1')}
-									validate={this.getFieldValidators('address1')}
-									placeholder={this.getFieldPlaceholder('address1')}
-								/>
-								<Field
-									className={accountInputField}
-									name="shipping_address.address2"
-									id="shipping_address.address2"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('address2')}
-									placeholder={this.getFieldPlaceholder('address2')}
-								/>
-								<Field
-									className={accountInputField}
-									name="shipping_address.country"
-									id="shipping_address.country"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('country')}
-									validate={this.getFieldValidators('country')}
-									placeholder={this.getFieldPlaceholder('country')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="shipping_address.state"
-									id="shipping_address.state"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('state')}
-									validate={this.getFieldValidators('state')}
-									placeholder={this.getFieldPlaceholder('state')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="shipping_address.postal_code"
-									id="shipping_address.postal_code"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('postal_code')}
-									validate={this.getFieldValidators('postal_code')}
-									placeholder={this.getFieldPlaceholder('postal_code')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="shipping_address.city"
-									id="shipping_address.city"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('city')}
-									validate={this.getFieldValidators('city')}
-									placeholder={this.getFieldPlaceholder('city')}
-								/>
-
-								<h3 className={titleClassName}>{text.billingAddress}</h3>
-								<Field
-									className={accountInputField}
-									name="billing_address.address1"
-									id="billing_address.address1"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('address1')}
-									validate={this.getFieldValidators('address1')}
-									placeholder={this.getFieldPlaceholder('address1')}
-								/>
-								<Field
-									className={accountInputField}
-									name="billing_address.address2"
-									id="billing_address.address2"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('address2')}
-									placeholder={this.getFieldPlaceholder('address2')}
-								/>
-								<Field
-									className={accountInputField}
-									name="billing_address.country"
-									id="billing_address.country"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('country')}
-									validate={this.getFieldValidators('country')}
-									placeholder={this.getFieldPlaceholder('country')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="billing_address.state"
-									id="billing_address.state"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('state')}
-									validate={this.getFieldValidators('state')}
-									placeholder={this.getFieldPlaceholder('state')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="billing_address.postal_code"
-									id="billing_address.postal_code"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('postal_code')}
-									validate={this.getFieldValidators('postal_code')}
-									placeholder={this.getFieldPlaceholder('postal_code')}
-								/>
-
-								<Field
-									className={accountInputField}
-									name="billing_address.city"
-									id="billing_address.city"
-									component={InputField}
-									type="text"
-									label={this.getFieldLabel('city')}
-									validate={this.getFieldValidators('city')}
-									placeholder={this.getFieldPlaceholder('city')}
-								/>
-
-								<div className="checkout-button-wrap">
-									<button
-										type="submit"
-										//disabled={invalid}
-										className={accountEditButtonClass}
-									>
-										{text.save}
-									</button>
-								</div>
-							</form>
-						</div>
-					)}
-					{this.state.profileSection === 2 && (
-						<div className={accountProfileContainer}>
-							<div className="spread-sheet-container">
-								<fieldset className="orders-history-fieldset">
-									<div className="heading">
-										<h3>{text.order_history}</h3>
-									</div>
-									<div className="schedule padd-lr">
-										<div className="tbl-header">
-											<table
-												cellPadding="0"
-												cellSpacing="0"
-												id="mytable"
-												style={tableStyle}
-											>
-												<thead>{listHeader}</thead>
-											</table>
-										</div>
-										<div className="tbl-content">
-											<table
-												cellPadding="0"
-												cellSpacing="0"
-												className={'orders-history-table'}
-												style={tableStyle}
-											>
-												<tbody>{list}</tbody>
-											</table>
-										</div>
-									</div>
-								</fieldset>
-							</div>
-						</div>
-					)}
 					<div className={accountButtonContainer}>
 						{this.state.profileSection !== 2 &&
 							Object.keys(shippingAddress).length !== 0 && (

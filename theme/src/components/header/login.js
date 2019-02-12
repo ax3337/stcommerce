@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { themeSettings, text } from '../../lib/settings';
+import Lscache from 'lscache';
 
 const LoginIcon = () => {
 	return (
@@ -21,11 +22,21 @@ const LoginIcon = () => {
 };
 
 export default class Login extends React.PureComponent {
+	constructor(props) {
+		super(props);
+		this.state = {
+			userName:
+				Lscache.get('name_user') !== undefined
+					? Lscache.get('name_user')
+					: 'Guest'
+		};
+	}
+
 	render() {
 		const { login, onClick } = this.props;
 		return (
 			<span className="login-button" onClick={onClick}>
-				<p className="is-hidden-mobile">User</p>
+				<p className="is-hidden-mobile">{this.state.userName}</p>
 				<LoginIcon />
 			</span>
 		);
