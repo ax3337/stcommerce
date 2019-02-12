@@ -37,12 +37,6 @@ const CategoryHero = ({ categoryDetails, categories }) => (
 	<section className="hero is-light">
 		<div className="hero-body">
 			<div className="container">
-				{themeSettings.show_category_breadcrumbs && (
-					<CategoryBreadcrumbs
-						currentCategory={categoryDetails}
-						categories={categories}
-					/>
-				)}
 				<h1 className="category-title">{categoryDetails.name}</h1>
 				<div
 					className="category-description is-hidden-mobile content"
