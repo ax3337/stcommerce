@@ -5,7 +5,6 @@ import MetaTags from '../components/metaTags';
 import ProductList from '../components/productList';
 import ProductFilter from '../components/productFilter';
 import Sort from '../components/sort';
-import CategoryBreadcrumbs from '../components/categoryBreadcrumbs';
 import * as helper from '../lib/helper';
 
 const getFilterAttributesSummary = productFilter => {
@@ -41,13 +40,6 @@ const CategoryHero = ({ categoryDetails, categories }) => (
 				<div
 					className="category-description is-hidden-mobile content"
 					dangerouslySetInnerHTML={{ __html: categoryDetails.description }}
-				/>
-			</div>
-			<div className="column is-5">
-				<Sort
-					defaultSort={settings.default_product_sorting}
-					currentSort={productFilter.sort}
-					setSort={setSort}
 				/>
 			</div>
 		</div>
