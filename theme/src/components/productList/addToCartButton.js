@@ -45,7 +45,16 @@ const AddToCartButton = ({
 				style={buttonStyle}
 				onClick={addCartItem}
 			>
-				{addToCartText}
+				<img
+					src="/assets/images/shopping_cart.png"
+					style={{
+						minWidth: 18 + 'px',
+						minHeight: 18 + 'px',
+						maxWidth: 18 + 'px',
+						maxHeight: 18 + 'px'
+					}}
+				/>
+				{product.price}
 			</button>
 		);
 	} else if (product.variable && !isAllOptionsSelected) {
@@ -75,7 +84,16 @@ const AddToCartButton = ({
 				style={buttonStyle}
 				onClick={addCartItem}
 			>
-				{addToCartText}
+				<img
+					src="/assets/images/shopping_cart.png"
+					style={{
+						minWidth: 18 + 'px',
+						minHeight: 18 + 'px',
+						maxWidth: 18 + 'px',
+						maxHeight: 18 + 'px'
+					}}
+				/>
+				{product.price + ' руб'}
 			</button>
 		);
 	} else if (product.stock_status === 'out_of_stock') {

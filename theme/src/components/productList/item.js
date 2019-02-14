@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { themeSettings, text } from '../../lib/settings';
 import ItemTags from './itemTags';
 import ItemImage from './itemImage';
-import ItemPrice from './itemPrice';
 import AddToCartButton from './addToCartButton';
 
 const Item = ({
@@ -85,7 +84,6 @@ const Item = ({
 							</td>
 						</tr>
 					</div>
-					<ItemPrice product={product} settings={settings} />
 				</div>
 			</div>
 		</div>
