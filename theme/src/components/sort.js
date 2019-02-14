@@ -24,6 +24,38 @@ const Sort = ({ defaultSort, currentSort, setSort }) => (
 				</select>
 			</span>
 		</div>
+		<div className="column display-category">
+			<span className="login-button">
+				<img
+					src="/assets/images/dashboard.svg"
+					className="login-icon"
+					alt="Плитка"
+					title="Плитка"
+					style={{
+						marginTop: 7 + 'px',
+						minWidth: 24 + 'px',
+						minHeight: 29 + 'px',
+						maxWidth: 44 + 'px',
+						maxHeight: 28 + 'px'
+					}}
+				/>
+			</span>
+			<span className="login-button">
+				<img
+					src="/assets/images/list.svg"
+					className="login-icon"
+					alt="Список"
+					title="Список"
+					style={{
+						marginTop: 7 + 'px',
+						minWidth: 24 + 'px',
+						minHeight: 29 + 'px',
+						maxWidth: 44 + 'px',
+						maxHeight: 28 + 'px'
+					}}
+				/>
+			</span>
+		</div>
 	</div>
 );
 
