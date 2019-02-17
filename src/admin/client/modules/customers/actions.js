@@ -231,6 +231,17 @@ export function fetchCustomer(customerId) {
 	};
 }
 
+export function createCustomer(data) {
+	return (dispatch, getState) => {
+		return api.customers
+			.create(data)
+			.then(customerResponse => {
+				dispatch(receiveCustomer(customerResponse.json));
+			})
+			.catch(error => {});
+	};
+}
+
 export function updateAddress(customerId, addressId, data) {
 	return (dispatch, getState) => {
 		return api.customers
