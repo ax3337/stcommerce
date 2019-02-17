@@ -215,6 +215,7 @@
   "customers_orders": "Заказы",
   "customers_location": "Место нахождения",
   "customers_search": "Поиск клиентов",
+  "addCustomer": "Добавить нового клиента",
   "customers_setGroup": "Изменить группу",
   "customers_noGroup": "Нет группы",
   "customerGroups_title": "Группы клиентов",
