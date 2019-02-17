@@ -4,7 +4,8 @@ import {
 	fetchCustomers,
 	deleteCustomers,
 	setGroup,
-	setFilterSearch
+	setFilterSearch,
+	createCustomer
 } from '../actions';
 import Buttons from './components/buttons';
 
