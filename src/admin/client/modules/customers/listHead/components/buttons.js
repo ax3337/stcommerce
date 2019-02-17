@@ -12,6 +12,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Search from './search';
+import SummaryForm from './summaryForm.js';
 
 export default class Buttons extends React.Component {
 	constructor(props) {
@@ -19,9 +20,23 @@ export default class Buttons extends React.Component {
 		this.state = {
 			groupId: null,
 			openSetGroup: false,
-			openDelete: false
+			openDelete: false,
+			openSummaryEdit: false
 		};
 	}
+	
+	showSummaryEdit = () => {
+		this.setState({ openSummaryEdit: true });
+	};
+
+	hideSummaryEdit = () => {
+		this.setState({ openSummaryEdit: false });
+	};
+
+	saveSummaryEdit = customer => {
+		this.props.onCustomerCreate(customer);
+		this.hideSummaryEdit();
+	};
 
 	showSetGroup = () => {
 		this.setState({ openSetGroup: true });
@@ -54,7 +69,7 @@ export default class Buttons extends React.Component {
 	};
 
 	render() {
-		const { search, setSearch, selectedCount, onDelete } = this.props;
+		const { search, setSearch, selectedCount, onDelete, customer, settings } = this.props;
 
 		const actionsSetGroup = [
 			<FlatButton
@@ -119,6 +134,30 @@ export default class Buttons extends React.Component {
 						</Dialog>
 					</span>
 				)}
+<IconButton
+					touch={true}
+					tooltipPosition="bottom-left"
+					tooltip={messages.addCustomer}
+					onClick={this.showSummaryEdit}
+				>
+					<FontIcon color="#fff" className="material-icons">
+						add
+					</FontIcon>
+				</IconButton>
+
+				<Dialog
+					title={messages.customers_titleEdit}
+					modal={false}
+					open={this.state.openSummaryEdit}
+					onRequestClose={this.hideSummaryEdit}
+					contentStyle={{ width: 600 }}
+				>
+					<SummaryForm
+						initialValues={customer}
+						onCancel={this.hideSummaryEdit}
+						onSubmit={this.saveSummaryEdit}
+					/>
+				</Dialog>
 			</span>
 		);
 	}
