@@ -34,7 +34,8 @@ const menuItems = [
 		icon: 'people'
 	},
 	{
-		title: messages.drawer_managers,
+		// title: messages.drawer_managers,
+		title: 'Пользователи',
 		url: '/admin/managers',
 		icon: 'person'
 	},
@@ -110,36 +111,33 @@ const styles = {
 };
 
 const DrawerMenu = ({ open, onClose, currentUrl }) => {
-	const items = menuItems.map(
-		(item, index) =>
-			item.title === '-' ? (
-				<Divider key={index} />
-			) : (
-				<NavLink
-					to={item.url}
-					key={index}
-					exact={true}
-					style={styles.link}
-					activeStyle={styles.linkActive}
-				>
-					<MenuItem
-						onClick={onClose}
-						primaryText={item.title}
-						innerDivStyle={styles.itemInnerDiv}
-						style={styles.item}
-						leftIcon={
-							<Icon
-								style={
-									item.url === currentUrl ? styles.iconActive : styles.icon
-								}
-								className="material-icons"
-							>
-								{item.icon}
-							</Icon>
-						}
-					/>
-				</NavLink>
-			)
+	const items = menuItems.map((item, index) =>
+		item.title === '-' ? (
+			<Divider key={index} />
+		) : (
+			<NavLink
+				to={item.url}
+				key={index}
+				exact={true}
+				style={styles.link}
+				activeStyle={styles.linkActive}
+			>
+				<MenuItem
+					onClick={onClose}
+					primaryText={item.title}
+					innerDivStyle={styles.itemInnerDiv}
+					style={styles.item}
+					leftIcon={
+						<Icon
+							style={item.url === currentUrl ? styles.iconActive : styles.icon}
+							className="material-icons"
+						>
+							{item.icon}
+						</Icon>
+					}
+				/>
+			</NavLink>
+		)
 	);
 
 	return (
