@@ -15,8 +15,8 @@ const validateEmail = value =>
 
 const ReadOnlyField = ({ name, value }) => {
 	return (
-		<div className="checkout-field-preview">
-			<div className="name">{name}</div>
+		<div className="account-field-preview">
+			<div className="name">{name}:</div>
 			<div className="value">{value}</div>
 		</div>
 	);
@@ -418,40 +418,36 @@ class Account extends React.Component {
 								/>
 								<h4>Адрес доставки</h4>
 								<div className="account-profile-address-container">
-									<div className="account-profile-address-container1">
-										{Object.keys(shippingAddress).length > 0 && (
-											<ReadOnlyField
-												name={text.country}
-												value={shippingAddress.country}
-											/>
-										)}
-										{Object.keys(shippingAddress).length > 0 && (
-											<ReadOnlyField
-												name={text.city}
-												value={shippingAddress.city}
-											/>
-										)}
-										{Object.keys(shippingAddress).length > 0 && (
-											<ReadOnlyField
-												name={text.postal_code}
-												value={shippingAddress.postal_code}
-											/>
-										)}
-									</div>
-									<div className="account-profile-address-container2">
-										{Object.keys(shippingAddress).length > 0 && (
-											<ReadOnlyField
-												name={text.state}
-												value={shippingAddress.state}
-											/>
-										)}
-										{Object.keys(shippingAddress).length > 0 && (
-											<ReadOnlyField
-												name={text.address1}
-												value={shippingAddress.address1}
-											/>
-										)}
-									</div>
+									{Object.keys(shippingAddress).length > 0 && (
+										<ReadOnlyField
+											name={text.country}
+											value={shippingAddress.country}
+										/>
+									)}
+									{Object.keys(shippingAddress).length > 0 && (
+										<ReadOnlyField
+											name={text.city}
+											value={shippingAddress.city}
+										/>
+									)}
+									{Object.keys(shippingAddress).length > 0 && (
+										<ReadOnlyField
+											name={text.postal_code}
+											value={shippingAddress.postal_code}
+										/>
+									)}
+									{Object.keys(shippingAddress).length > 0 && (
+										<ReadOnlyField
+											name={text.state}
+											value={shippingAddress.state}
+										/>
+									)}
+									{Object.keys(shippingAddress).length > 0 && (
+										<ReadOnlyField
+											name={text.address1}
+											value={shippingAddress.address1}
+										/>
+									)}
 								</div>
 								<h4>Варианты доставки</h4>
 								<div />
@@ -498,8 +494,8 @@ class Account extends React.Component {
 									/>
 								</form>
 								<h4>Адрес доставки</h4>
-								<div className="account-profile-address-container">
-									<div className="account-profile-address-container1">
+								<div className="account-profile-address-container-edit">
+									<div className="account-profile-address-container-edit1">
 										<Field
 											className={accountInputField}
 											name="shipping_address.country"
@@ -532,7 +528,7 @@ class Account extends React.Component {
 											placeholder={this.getFieldPlaceholder('postal_code')}
 										/>
 									</div>
-									<div className="account-profile-address-container2">
+									<div className="account-profile-address-container-edit2">
 										<Field
 											className={accountInputField}
 											name="shipping_address.state"
