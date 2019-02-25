@@ -11,7 +11,6 @@ const LoginIcon = () => {
 			alt={text.login}
 			title={text.login}
 			style={{
-				marginTop: 7 + 'px',
 				minWidth: 32 + 'px',
 				minHeight: 29 + 'px',
 				maxWidth: 44 + 'px',
@@ -35,7 +34,7 @@ export default class Login extends React.PureComponent {
 	render() {
 		const { login, onClick } = this.props;
 		return (
-			<span className="login-button" onClick={onClick}>
+			<span className="cart-button" onClick={onClick}>
 				<p className="is-hidden-mobile">{this.state.userName}</p>
 				<LoginIcon />
 			</span>
