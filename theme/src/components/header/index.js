@@ -178,7 +178,7 @@ export default class Header extends React.Component {
 
 							<div className="column is-4 has-text-right header-block-right">
 								<span
-									className="icon icon-search is-hidden-tablet"
+									className="icon cart-button is-hidden-tablet"
 									onClick={this.searchToggle}
 								>
 									<img
