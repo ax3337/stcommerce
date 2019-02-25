@@ -11,7 +11,8 @@ const LoginIcon = () => {
 			alt={text.login}
 			title={text.login}
 			style={{
-				minWidth: 24 + 'px',
+				width: 24 + 'px',
+				height: 24 + 'px',
 			}}
 		/>
 	);
