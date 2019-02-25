@@ -4,7 +4,7 @@ import { themeSettings, text } from '../lib/settings';
 
 const Sort = ({ defaultSort, currentSort, setSort }) => (
 	<div className="columns is-mobile sort">
-		<div className="column is-4 sort-title">{text.sort}:</div>
+		<div className="is-4 sort-title">{text.sort}:</div>
 		<div className="column">
 			<span className="select is-fullwidth">
 				<select
@@ -24,7 +24,7 @@ const Sort = ({ defaultSort, currentSort, setSort }) => (
 				</select>
 			</span>
 		</div>
-		<div className="column display-category">
+		<div className="display-category">
 			<span className="login-button">
 				<img
 					src="/assets/images/dashboard.svg"
@@ -32,11 +32,10 @@ const Sort = ({ defaultSort, currentSort, setSort }) => (
 					alt="Плитка"
 					title="Плитка"
 					style={{
-						marginTop: 7 + 'px',
-						minWidth: 24 + 'px',
-						minHeight: 29 + 'px',
-						maxWidth: 44 + 'px',
-						maxHeight: 28 + 'px'
+						minWidth: 20 + 'px',
+						minHeight: 20 + 'px',
+						maxWidth: 20 + 'px',
+						maxHeight: 20 + 'px'
 					}}
 				/>
 			</span>
@@ -47,11 +46,10 @@ const Sort = ({ defaultSort, currentSort, setSort }) => (
 					alt="Список"
 					title="Список"
 					style={{
-						marginTop: 7 + 'px',
-						minWidth: 24 + 'px',
-						minHeight: 29 + 'px',
-						maxWidth: 44 + 'px',
-						maxHeight: 28 + 'px'
+						minWidth: 20 + 'px',
+						minHeight: 20 + 'px',
+						maxWidth: 20 + 'px',
+						maxHeight: 20 + 'px'
 					}}
 				/>
 			</span>

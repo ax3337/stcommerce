@@ -9,10 +9,10 @@ const Item = ({
 	product,
 	addCartItem,
 	settings,
-	columnCountOnMobile = 2,
-	columnCountOnTablet = 3,
-	columnCountOnDesktop = 4,
-	columnCountOnWidescreen = 4,
+	columnCountOnMobile = 1,
+	columnCountOnTablet = 2,
+	columnCountOnDesktop = 3,
+	columnCountOnWidescreen = 3,
 	columnCountOnFullhd = 4
 }) => {
 	const columnCount = 12;
@@ -72,17 +72,11 @@ const Item = ({
 						</tr>
 					</div>
 					<div className="product-addToCartButton">
-						<tr>
-							<td>Количество:</td>
-							<td>
-								<input />
-							</td>
-							<td>
-								<div className="button-addtocart">
-									<AddToCartButton product={product} />
-								</div>
-							</td>
-						</tr>
+						<span>Количество:</span>
+						<input />
+						<div>
+							<AddToCartButton product={product} />
+						</div>
 					</div>
 				</div>
 			</div>

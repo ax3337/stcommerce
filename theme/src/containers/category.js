@@ -32,15 +32,24 @@ const getFilterPriceSummary = (productFilter, settings) => {
 	return priceSummary;
 };
 
-const CategoryHero = ({ categoryDetails, categories }) => (
+const CategoryHero = ({
+	categoryDetails,
+	categories,
+	settings,
+	productFilter,
+	setSort
+}) => (
 	<section className="hero is-light">
 		<div className="hero-body">
 			<div className="container">
 				<h1 className="category-title">{categoryDetails.name}</h1>
-				<div
-					className="category-description is-hidden-mobile content"
-					dangerouslySetInnerHTML={{ __html: categoryDetails.description }}
-				/>
+				<div className="is-hidden-mobile">
+					<Sort
+						defaultSort={settings}
+						currentSort={productFilter}
+						setSort={setSort}
+					/>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -96,7 +105,13 @@ const CategoryContainer = props => {
 				jsonld={jsonld}
 			/>
 
-			<CategoryHero categoryDetails={categoryDetails} categories={categories} />
+			<CategoryHero
+				categoryDetails={categoryDetails}
+				categories={categories}
+				settings={settings.default_product_sorting}
+				productFilter={productFilter.sort}
+				setSort={setSort}
+			/>
 
 			<section className="section section-category">
 				<div className="container">
@@ -108,16 +123,6 @@ const CategoryContainer = props => {
 						)}
 
 						<div className="column">
-							<div className="columns is-hidden-mobile">
-								<div className="column" />
-								<div className="column is-5">
-									<Sort
-										defaultSort={settings.default_product_sorting}
-										currentSort={productFilter.sort}
-										setSort={setSort}
-									/>
-								</div>
-							</div>
 							<ProductList
 								products={products}
 								addCartItem={addCartItem}
