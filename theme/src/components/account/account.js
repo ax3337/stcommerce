@@ -279,6 +279,7 @@ class Account extends React.Component {
 		let billingAddress = {};
 		let shippingAddress = {};
 		let orderHistory = {};
+		let orderHistoryAllData = {};
 		const list = [];
 		let tableStyle = null;
 		let keyCounter = 0;
@@ -346,6 +347,15 @@ class Account extends React.Component {
 						map['ordered_items' + i] = obj.items;
 						return map;
 					}, {});
+				console.log(orderHistory);
+
+				orderHistoryAllData = this.props.customerProperties.order_statuses.data
+					.filter(obj => obj.draft !== true)
+					.reduce(function(map, obj, i) {
+						map['ordered_items' + i] = obj;
+						return map;
+					}, {});
+				console.log(orderHistoryAllData);
 			}
 
 			// get all orders
