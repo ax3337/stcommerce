@@ -9,7 +9,7 @@ const Item = ({
 	product,
 	addCartItem,
 	settings,
-	columnCountOnMobile = 1,
+	columnCountOnMobile = 2,
 	columnCountOnTablet = 2,
 	columnCountOnDesktop = 3,
 	columnCountOnWidescreen = 3,
