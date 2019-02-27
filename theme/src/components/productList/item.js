@@ -36,6 +36,9 @@ const Item = ({
 
 	return (
 		<div
+			style={{
+				minWidth: 250 + 'px'
+			}}
 			className={`column is-${columnSizeOnMobile}-mobile is-${columnSizeOnTablet}-tablet is-${columnSizeOnDesktop}-desktop is-${columnSizeOnWidescreen}-widescreen is-${columnSizeOnFullhd}-fullhd ${
 				product.stock_status
 			}`}
