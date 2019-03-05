@@ -117,9 +117,8 @@ class ProductCategoriesService {
 				return db
 					.collection('productCategories')
 					.deleteMany({ _id: { $in: objectsToDelete } })
-					.then(
-						deleteResponse =>
-							deleteResponse.deletedCount > 0 ? idsToDelete : null
+					.then(deleteResponse =>
+						deleteResponse.deletedCount > 0 ? idsToDelete : null
 					);
 			})
 			.then(idsToDelete => {
@@ -164,6 +163,9 @@ class ProductCategoriesService {
 		};
 
 		category.name = parse.getString(data.name);
+		category.opt1 = parseInt(data.opt1);
+		category.opt2 = parseInt(data.opt2);
+		category.vip = parseInt(data.vip);
 		category.description = parse.getString(data.description);
 		category.meta_description = parse.getString(data.meta_description);
 		category.meta_title = parse.getString(data.meta_title);
@@ -198,6 +200,18 @@ class ProductCategoriesService {
 
 			if (data.name !== undefined) {
 				category.name = parse.getString(data.name);
+			}
+
+			if (data.opt1 !== undefined) {
+				category.opt1 = parseInt(data.opt1);
+			}
+
+			if (data.opt2 !== undefined) {
+				category.opt2 = parseInt(data.opt2);
+			}
+
+			if (data.vip !== undefined) {
+				category.vip = parseInt(data.vip);
 			}
 
 			if (data.description !== undefined) {

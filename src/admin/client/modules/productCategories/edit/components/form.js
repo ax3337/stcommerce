@@ -17,10 +17,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 const validate = values => {
 	const errors = {};
 	const requiredFields = ['name'];
+	const numberFields = ['opt1', 'opt2', 'vip'];
 
 	requiredFields.forEach(field => {
 		if (values && !values[field]) {
 			errors[field] = messages.errors_required;
+		}
+	});
+
+	numberFields.map(field => {
+		if (values && values[field] && isNaN(parseFloat(values[field]))) {
+			errors[field] = messages.errors_number;
 		}
 	});
 
@@ -86,6 +93,24 @@ const ProductCategoryEditForm = ({
 							name="description"
 							entityId={categoryId}
 							component={Editor}
+						/>
+						<Field
+							name="opt1"
+							component={TextField}
+							floatingLabelText="ОПТ 1"
+							fullWidth={true}
+						/>
+						<Field
+							name="opt2"
+							component={TextField}
+							floatingLabelText="ОПТ 2"
+							fullWidth={true}
+						/>
+						<Field
+							name="vip"
+							component={TextField}
+							floatingLabelText="VIP"
+							fullWidth={true}
 						/>
 						<div className={style.shortBox}>
 							<Field
