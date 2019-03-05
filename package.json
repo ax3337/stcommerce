@@ -147,6 +147,7 @@
     "npm": "^5.0.0"
   },
   "devDependencies": {
-    "css-loader": "^1.0.0"
+    "css-loader": "^1.0.0",
+    "redux-devtools-extension": "^2.13.8"
   }
 }

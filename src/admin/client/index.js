@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { fetchSettings } from 'modules/settings/actions';
 import settings from 'lib/settings';
@@ -19,7 +20,10 @@ if (DEVELOPER_MODE === false) {
 	auth.validateCurrentToken();
 }
 
-const store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const store = createStore(
+	reducers,
+	composeWithDevTools(applyMiddleware(thunkMiddleware))
+);
 store.dispatch(fetchSettings());
 
 if (window.WebSocket) {
