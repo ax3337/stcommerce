@@ -170,9 +170,8 @@ class ProductsService {
 			name: attributeName,
 			values: allAttributesResult
 				.filter(b => b._id.name === attributeName)
-				.sort(
-					(a, b) =>
-						a._id.value > b._id.value ? 1 : b._id.value > a._id.value ? -1 : 0
+				.sort((a, b) =>
+					a._id.value > b._id.value ? 1 : b._id.value > a._id.value ? -1 : 0
 				)
 				.map(b => ({
 					name: b._id.value,
@@ -444,6 +443,9 @@ class ProductsService {
 			url: { $literal: '' },
 			path: { $literal: '' },
 			category_name: { $literal: '' },
+			vip: { $literal: '' },
+			opt1: { $literal: '' },
+			opt2: { $literal: '' },
 			category_slug: { $literal: '' }
 		};
 
@@ -647,8 +649,8 @@ class ProductsService {
 		if (!ObjectID.isValid(id)) {
 			return Promise.reject('Invalid identifier');
 		}
-		return this.getProducts({ ids: id, limit: 1 }).then(
-			products => (products.data.length > 0 ? products.data[0] : {})
+		return this.getProducts({ ids: id, limit: 1 }).then(products =>
+			products.data.length > 0 ? products.data[0] : {}
 		);
 	}
 
@@ -985,6 +987,18 @@ class ProductsService {
 					if (category) {
 						if (item.category_name === '') {
 							item.category_name = category.name;
+						}
+
+						if (item.vip === '') {
+							item.vip = category.vip;
+						}
+
+						if (item.opt1 === '') {
+							item.opt1 = category.opt1;
+						}
+
+						if (item.opt2 === '') {
+							item.opt2 = category.opt2;
 						}
 
 						if (item.category_slug === '') {

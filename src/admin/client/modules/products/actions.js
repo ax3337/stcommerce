@@ -179,7 +179,7 @@ const getFilter = (state, offset = 0) => {
 	let filter = {
 		limit: 50,
 		fields:
-			'id,name,category_id,category_ids,category_name,sku,images,enabled,discontinued,stock_status,stock_quantity,price,on_sale,regular_price,url',
+			'id,name,category_id,category_ids,category_name,vip,opt1,opt2,sku,images,enabled,discontinued,stock_status,stock_quantity,price,on_sale,regular_price,url',
 		search: searchTerm,
 		offset: offset,
 		sort: sortOrder
@@ -581,5 +581,3 @@ export function uploadImages(productId, form) {
 			});
 	};
 }
-
-
