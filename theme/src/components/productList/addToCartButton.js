@@ -4,10 +4,19 @@ import { themeSettings, text } from '../../lib/settings';
 
 const AddToCartButton = ({
 	product,
+	customer,
 	variant,
 	addCartItem,
 	isAllOptionsSelected
 }) => {
+	let tax = 0;
+	if (customer !== undefined) {
+		for (var key in product) {
+			if (key === customer.customer_settings.group_name) {
+				tax = product[key] / 100;
+			}
+		}
+	}
 	let buttonStyle = {};
 	if (
 		themeSettings.button_addtocart_bg &&
@@ -54,7 +63,7 @@ const AddToCartButton = ({
 						maxHeight: 18 + 'px'
 					}}
 				/>
-				{product.price}
+				{product.price - product.price * tax + ' руб'}
 			</button>
 		);
 	} else if (product.variable && !isAllOptionsSelected) {
@@ -93,7 +102,7 @@ const AddToCartButton = ({
 						maxHeight: 18 + 'px'
 					}}
 				/>
-				<p>{product.price + ' руб'}</p>
+				<p>{product.price - product.price * tax + ' руб'}</p>
 			</button>
 		);
 	} else if (product.stock_status === 'out_of_stock') {

@@ -7,7 +7,7 @@ const ProductContainer = props => {
 	const {
 		addCartItem,
 		getJSONLD,
-		state: { productDetails, settings, categories }
+		state: { productDetails, settings, categories, customerProperties }
 	} = props;
 
 	if (productDetails) {
@@ -37,6 +37,7 @@ const ProductContainer = props => {
 					product={productDetails}
 					addCartItem={addCartItem}
 					categories={categories}
+					customer={customerProperties}
 				/>
 			</Fragment>
 		);
@@ -50,6 +51,7 @@ ProductContainer.propTypes = {
 	state: PropTypes.shape({
 		settings: PropTypes.shape({}),
 		productDetails: PropTypes.shape({}),
+		customerProperties: PropTypes.shape({}),
 		categories: PropTypes.arrayOf(PropTypes.shape({}))
 	}).isRequired
 };

@@ -16,7 +16,22 @@ const NewAndOldPrices = ({ newPrice, oldPrice, settings }) => (
 	</div>
 );
 
-const Price = ({ product, variant, isAllOptionsSelected, settings }) => {
+const Price = ({
+	product,
+	variant,
+	isAllOptionsSelected,
+	settings,
+	customer
+}) => {
+	let tax = 0;
+	if (customer !== undefined) {
+		for (var key in product) {
+			if (key === customer.customer_settings.group_name) {
+				tax = product[key] / 100;
+			}
+		}
+	}
+	console.log(tax);
 	let priceStyle = {};
 	if (
 		themeSettings.details_price_size &&
@@ -35,13 +50,13 @@ const Price = ({ product, variant, isAllOptionsSelected, settings }) => {
 	let oldPrice = 0;
 
 	if (product.variable && variant && variant.price > 0) {
-		price = variant.price;
+		price = variant.price - variant.price * tax;
 	} else {
-		price = product.price;
+		price = product.price - product.price * tax;
 	}
 
 	if (product.on_sale) {
-		oldPrice = product.regular_price;
+		oldPrice = product.regular_price - product.regular_price * tax;
 	}
 
 	if (oldPrice > 0) {

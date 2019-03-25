@@ -9,6 +9,7 @@ const ProductList = ({
 	settings,
 	loadMoreProducts,
 	hasMore,
+	customer,
 	loadingProducts,
 	loadingMoreProducts,
 	isCentered,
@@ -26,6 +27,7 @@ const ProductList = ({
 					product={product}
 					addCartItem={addCartItem}
 					settings={settings}
+					customer={customer}
 					columnCountOnMobile={columnCountOnMobile}
 					columnCountOnTablet={columnCountOnTablet}
 					columnCountOnDesktop={columnCountOnDesktop}

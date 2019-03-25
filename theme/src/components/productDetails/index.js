@@ -101,16 +101,16 @@ export default class ProductDetails extends React.Component {
 	}
 
 	render() {
-		const { product, settings, categories } = this.props;
+		const { product, settings, categories, customer } = this.props;
 		const { selectedVariant, isAllOptionsSelected } = this.state;
 		const maxQuantity =
 			product.stock_status === 'discontinued'
 				? 0
 				: product.stock_backorder
-					? themeSettings.maxCartItemQty
-					: selectedVariant
-						? selectedVariant.stock_quantity
-						: product.stock_quantity;
+				? themeSettings.maxCartItemQty
+				: selectedVariant
+				? selectedVariant.stock_quantity
+				: product.stock_quantity;
 
 		if (product) {
 			return (
@@ -133,6 +133,7 @@ export default class ProductDetails extends React.Component {
 											variant={selectedVariant}
 											isAllOptionsSelected={isAllOptionsSelected}
 											settings={settings}
+											customer={customer}
 										/>
 
 										{themeSettings.show_discount_countdown &&

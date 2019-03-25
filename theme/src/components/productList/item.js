@@ -85,7 +85,7 @@ export default class Item extends React.Component {
 	}
 
 	render() {
-		const { product, settings, categories, addCartItem } = this.props;
+		const { product, settings, categories, addCartItem, customer } = this.props;
 		const { selectedVariant, isAllOptionsSelected } = this.state;
 		const maxQuantity =
 			product.stock_status === 'discontinued'
@@ -172,6 +172,7 @@ export default class Item extends React.Component {
 										variant={selectedVariant}
 										addCartItem={this.addToCart}
 										isAllOptionsSelected={isAllOptionsSelected}
+										customer={customer}
 									/>
 								</div>
 							</div>
