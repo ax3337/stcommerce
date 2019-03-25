@@ -146,9 +146,15 @@ export default class Header extends React.Component {
 			currentPage,
 			location,
 			productFilter,
-			cartlayerBtnInitialized
+			cartlayerBtnInitialized,
+			customerProperties
 		} = this.props.state;
 
+		let userName = 'Гость';
+		if (this.props.state.customerProperties !== undefined) {
+			userName = this.props.state.customerProperties.customer_settings
+				.full_name;
+		}
 		const classToggle = this.state.mobileMenuIsActive
 			? 'navbar-burger is-hidden-tablet is-active'
 			: 'navbar-burger is-hidden-tablet';
@@ -188,6 +194,7 @@ export default class Header extends React.Component {
 										style={{ minWidth: 24 }}
 									/>
 								</span>
+								<p>{userName}</p>
 								<Login onClick={this.handleLogin} />
 								<CartIndicator
 									cart={cart}
