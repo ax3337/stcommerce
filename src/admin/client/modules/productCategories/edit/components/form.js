@@ -18,6 +18,7 @@ const validate = values => {
 	const errors = {};
 	const requiredFields = ['name'];
 	const numberFields = ['opt1', 'opt2', 'vip'];
+	const maxFields = ['opt1', 'opt2', 'vip'];
 
 	requiredFields.forEach(field => {
 		if (values && !values[field]) {
@@ -28,6 +29,12 @@ const validate = values => {
 	numberFields.map(field => {
 		if (values && values[field] && isNaN(parseFloat(values[field]))) {
 			errors[field] = messages.errors_number;
+		}
+	});
+
+	maxFields.map(field => {
+		if (values && values[field] && Number(values[field]) > 100) {
+			errors[field] = messages.errors_number_max;
 		}
 	});
 
