@@ -103,18 +103,21 @@ const ProductCategoryEditForm = ({
 						/>
 						<Field
 							name="opt1"
+							type="number"
 							component={TextField}
 							floatingLabelText="ОПТ 1"
 							fullWidth={true}
 						/>
 						<Field
 							name="opt2"
+							type="number"
 							component={TextField}
 							floatingLabelText="ОПТ 2"
 							fullWidth={true}
 						/>
 						<Field
 							name="vip"
+							type="number"
 							component={TextField}
 							floatingLabelText="VIP"
 							fullWidth={true}
