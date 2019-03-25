@@ -37,7 +37,8 @@ const CategoryHero = ({
 	categories,
 	settings,
 	productFilter,
-	setSort
+	setSort,
+	setDisplayList
 }) => (
 	<section className="hero is-light">
 		<div className="hero-body">
@@ -48,6 +49,7 @@ const CategoryHero = ({
 						defaultSort={settings}
 						currentSort={productFilter}
 						setSort={setSort}
+						setDisplayList={setDisplayList}
 					/>
 				</div>
 			</div>
@@ -63,6 +65,7 @@ CategoryHero.propTypes = {
 const CategoryContainer = props => {
 	const {
 		setSort,
+		setDisplayList,
 		addCartItem,
 		loadMoreProducts,
 		getJSONLD,
@@ -75,7 +78,8 @@ const CategoryContainer = props => {
 			productsHasMore,
 			categories,
 			loadingProducts,
-			loadingMoreProducts
+			loadingMoreProducts,
+			customerProperties
 		}
 	} = props;
 
@@ -111,6 +115,7 @@ const CategoryContainer = props => {
 				settings={settings.default_product_sorting}
 				productFilter={productFilter.sort}
 				setSort={setSort}
+				setDisplayList={setDisplayList}
 			/>
 
 			<section className="section section-category">
@@ -127,6 +132,7 @@ const CategoryContainer = props => {
 								products={products}
 								addCartItem={addCartItem}
 								settings={settings}
+								customer={customerProperties}
 								loadMoreProducts={loadMoreProducts}
 								hasMore={productsHasMore}
 								loadingProducts={loadingProducts}
@@ -141,6 +147,7 @@ const CategoryContainer = props => {
 };
 
 CategoryContainer.propTypes = {
+	setDisplayList: PropTypes.func.isRequired,
 	setSort: PropTypes.func.isRequired,
 	addCartItem: PropTypes.func.isRequired,
 	loadMoreProducts: PropTypes.func.isRequired,
@@ -151,6 +158,7 @@ CategoryContainer.propTypes = {
 		productFilter: PropTypes.shape({}),
 		productsHasMore: PropTypes.bool,
 		categoryDetails: PropTypes.shape({}),
+		customerProperties: PropTypes.shape({}),
 		categories: PropTypes.arrayOf(PropTypes.shape({})),
 		loadingProducts: PropTypes.bool,
 		loadingMoreProducts: PropTypes.bool

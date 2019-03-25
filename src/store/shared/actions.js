@@ -228,12 +228,24 @@ const requestCheckout = () => ({ type: t.CHECKOUT_REQUEST });
 
 const receiveCheckout = order => ({ type: t.CHECKOUT_RECEIVE, order });
 
-const handleRegisterProperties = data => ({ type: t.REGISTER_PROPERTIES, data });
+const handleRegisterProperties = data => ({
+	type: t.REGISTER_PROPERTIES,
+	data
+});
 const handleAccountProperties = data => ({ type: t.ACCOUNT_RECEIVE, data });
-const handleCartLayerInitialized = data => ({ type: t.CART_LAYER_INITIALIZED, data });
-const handleForgotPassword = data => ({ type: t.FORGOT_PASSWORD_PROPERTIES, data });
-const handleResetPassword = data => ({ type: t.RESET_PASSWORD_PROPERTIES, data });
- 
+const handleCartLayerInitialized = data => ({
+	type: t.CART_LAYER_INITIALIZED,
+	data
+});
+const handleForgotPassword = data => ({
+	type: t.FORGOT_PASSWORD_PROPERTIES,
+	data
+});
+const handleResetPassword = data => ({
+	type: t.RESET_PASSWORD_PROPERTIES,
+	data
+});
+
 export const receiveSitemap = currentPage => ({
 	type: t.SITEMAP_RECEIVE,
 	currentPage
@@ -264,9 +276,19 @@ export const setSort = sort => (dispatch, getState) => {
 	dispatch(fetchProducts());
 };
 
+export const setDisplayList = displayType => (dispatch, getState) => {
+	dispatch(setDisplayType(displayType));
+	dispatch(fetchProducts());
+};
+
 const setProductsFilter = filter => ({
 	type: t.SET_PRODUCTS_FILTER,
 	filter: filter
+});
+
+const setDisplayType = displayType => ({
+	type: t.SET_DISPLAY_TYPE,
+	displayType
 });
 
 export const analyticsSetShippingMethod = method_id => (dispatch, getState) => {
@@ -294,7 +316,7 @@ export const updateCart = (data, callback) => async (dispatch, getState) => {
 	}
 };
 
-export const customerData = (data, callback) => async (dispatch, getState) => {;
+export const customerData = (data, callback) => async (dispatch, getState) => {
 	const response = await api.ajax.account.retrieve(data);
 	let decodedJSON = Buffer.from(response.json, 'base64').toString('ascii');
 	decodedJSON = JSON.parse(decodedJSON);
@@ -311,7 +333,10 @@ export const loginUser = (data, callback) => async (dispatch, getState) => {
 	}
 };
 
-export const loggedinUserTimeUp = (data, callback) => async (dispatch, getState) => {
+export const loggedinUserTimeUp = (data, callback) => async (
+	dispatch,
+	getState
+) => {
 	const customerProps = {
 		token: '',
 		authenticated: false,
@@ -326,28 +351,37 @@ export const registerUser = (data, callback) => async (dispatch, getState) => {
 	dispatch(handleRegisterProperties(response.json));
 };
 
-export const changecustomerProperties = (data, callback) => async (dispatch, getState) => {
+export const changecustomerProperties = (data, callback) => async (
+	dispatch,
+	getState
+) => {
 	const response = await api.ajax.account.update(data);
 	let decodedJSON = Buffer.from(response.json, 'base64').toString('ascii');
 	decodedJSON = JSON.parse(decodedJSON);
 	dispatch(handleAccountProperties());
 };
 
-export const cartLayerInitialized = (data, callback) => async (dispatch, getState) => {
+export const cartLayerInitialized = (data, callback) => async (
+	dispatch,
+	getState
+) => {
 	dispatch(handleCartLayerInitialized(data.cartlayerBtnInitialized));
-}
+};
 
 export const resetPassword = (data, callback) => async (dispatch, getState) => {
 	const response = await api.ajax.resetPassword.retrieve(data);
 	console.log(response.json);
 	dispatch(handleResetPassword(response.json));
-}
+};
 
-export const forgotPassword = (data, callback) => async (dispatch, getState) => {
+export const forgotPassword = (data, callback) => async (
+	dispatch,
+	getState
+) => {
 	const response = await api.ajax.forgotPassword.retrieve(data);
 	console.log(response);
 	dispatch(handleForgotPassword(response.json));
-}
+};
 
 export const setCurrentPage = location => async (dispatch, getState) => {
 	let locationPathname = '/404';

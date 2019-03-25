@@ -45,7 +45,7 @@ const appReducer = (state = initialState, action) => {
 
 		case t.CART_RECEIVE:
 			return Object.assign({}, state, { cart: action.cart });
-		
+
 		case t.REGISTER_PROPERTIES:
 			return Object.assign({}, state, { registerProperties: action.data });
 
@@ -59,7 +59,9 @@ const appReducer = (state = initialState, action) => {
 			return Object.assign({}, state, { customer_properties: action.data });
 
 		case t.FORGOT_PASSWORD_PROPERTIES:
-			return Object.assign({}, state, { forgotPasswordProperties: action.data });
+			return Object.assign({}, state, {
+				forgotPasswordProperties: action.data
+			});
 
 		case t.RESET_PASSWORD_PROPERTIES:
 			return Object.assign({}, state, { resetPasswordProperties: action.data });
@@ -102,6 +104,9 @@ const appReducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				productFilter: Object.assign({}, state.productFilter, action.filter)
 			});
+
+		case t.SET_DISPLAY_TYPE:
+			return Object.assign({}, state, { displayType: action.displayType });
 
 		case t.LOCATION_CHANGED:
 			return Object.assign({}, state, { location: action.location });

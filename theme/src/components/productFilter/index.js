@@ -10,7 +10,8 @@ export default class ProductFilter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			sidebarIsActive: false
+			sidebarIsActive: false,
+			display: true
 		};
 	}
 
@@ -27,9 +28,10 @@ export default class ProductFilter extends React.Component {
 	};
 
 	render() {
-		const { sidebarIsActive } = this.state;
+		const { sidebarIsActive, display } = this.state;
 		const {
 			categoryDetails,
+			displayType,
 			categories,
 			settings,
 			productFilter,
@@ -61,6 +63,8 @@ export default class ProductFilter extends React.Component {
 									defaultSort={settings.default_product_sorting}
 									currentSort={productFilter.sort}
 									setSort={this.props.setSort}
+									setDisplayList={this.props.setDisplayList}
+									displayType={display}
 								/>
 							</div>
 
