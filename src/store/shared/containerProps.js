@@ -6,6 +6,7 @@ import {
 	updateCartItemQuantiry,
 	fetchMoreProducts,
 	setSort,
+	setDisplayList,
 	fetchShippingMethods,
 	fetchPaymentMethods,
 	updateCart,
@@ -91,6 +92,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 		},
 		setSort: sort => {
 			dispatch(setSort(sort));
+		},
+		setDisplayList: typeDisplay => {
+			dispatch(setDisplayList(typeDisplay));
 		},
 		setPriceFromAndTo: (priceFrom, priceTo) => {
 			const query = queryString.parse(ownProps.history.location.search);

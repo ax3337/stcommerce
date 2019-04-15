@@ -5,8 +5,8 @@
 			"script": "./src/api/server/index.js",
 			"node_args": "-r esm",
 			"watch": ["./config/server.js", "./src/api/server/"],
-			"instances": "1",
-			"exec_mode": "fork",
+			"instances": "2",
+			"exec_mode": "cluster",
 			"watch_options": {
 				"persistent": true,
 				"ignoreInitial": false
@@ -22,8 +22,8 @@
 				"./theme/dist/",
 				"./theme/assets/index.html"
 			],
-			"instances": "1",
-			"exec_mode": "fork",
+			"instances": "2",
+			"exec_mode": "cluster",
 			"watch_options": {
 				"persistent": true,
 				"ignoreInitial": false
@@ -39,8 +39,8 @@
 				"./theme/dist/",
 				"./theme/assets/index.html"
 			],
-			"instances": "1",
-			"exec_mode": "fork",
+			"instances": "2",
+			"exec_mode": "cluster",
 			"watch_options": {
 				"persistent": true,
 				"ignoreInitial": false
