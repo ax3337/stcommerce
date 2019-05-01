@@ -40,11 +40,6 @@ const menuItems = [
 		icon: 'person'
 	},
 	// {
-	// 	title: messages.settings_pages,
-	// 	url: '/admin/pages',
-	// 	icon: 'description'
-	// },
-	// {
 	// 	title: messages.files,
 	// 	url: '/admin/files',
 	// 	icon: 'folder'
@@ -54,10 +49,15 @@ const menuItems = [
 		url: 'settings'
 	},
 	// {
-	// 	title: messages.drawer_settings,
-	// 	url: '/admin/settings',
-	// 	icon: 'settings'
+	//	 title: messages.drawer_settings,
+	//	 url: '/admin/settings',
+	//	 icon: 'settings'
 	// },
+	{
+		title: messages.settings_pages,
+		url: '/admin/pages',
+		icon: 'description'
+	},
 	// {
 	// 	title: messages.apps,
 	// 	url: '/admin/apps',

@@ -168,16 +168,6 @@ export default class Header extends React.Component {
 				>
 					<div className="container">
 						<div className="columns is-gapless is-mobile header-container">
-							<div className="column is-4 column-burger">
-								{!showBackButton && (
-									<BurgerButton
-										onClick={this.menuToggle}
-										className={classToggle}
-									/>
-								)}
-								{showBackButton && <BackButton onClick={this.handleGoBack} />}
-							</div>
-
 							<div className="column is-4 has-text-centered column-logo">
 								<Logo src={settings.logo} onClick={this.closeAll} alt="logo" />
 							</div>
@@ -194,7 +184,7 @@ export default class Header extends React.Component {
 										style={{ minWidth: 24 }}
 									/>
 								</span>
-								<p>{userName}</p>
+								<p className="is-hidden-mobile">{userName}</p>
 								<Login onClick={this.handleLogin} />
 								<CartIndicator
 									cart={cart}
@@ -212,6 +202,15 @@ export default class Header extends React.Component {
 										cartToggle={this.cartToggle}
 										cartlayerBtnInitialized={cartlayerBtnInitialized}
 									/>
+								</div>
+								<div className="column is-4 column-burger">
+									{!showBackButton && (
+										<BurgerButton
+											onClick={this.menuToggle}
+											className={classToggle}
+										/>
+									)}
+									{showBackButton && <BackButton onClick={this.handleGoBack} />}
 								</div>
 							</div>
 						</div>
